@@ -1,0 +1,46 @@
+/*======== RESET ================================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*======== BASE ================================*/
+/*========VARIABLES================================*/
+:root{
+    --color: rgb(32, 184, 32);
+}
+
+/*======== Layout ================================*/
+#header{
+    height: 4.5rem;
+    /*rem == "root element"*/
+    /*não é legal usar Pixels quando 
+    for fazer um site que seja (responsivel)*/
+}
+.logo{
+}
+a {/*tira a decoração do texto*/
+    text-decoration: none;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+body{
+    font: 400 1rem 'DM Sans', sans-serif;
+   
+}
+h1 {
+    font: 700 1.85rem "Poppins", sans-serif;
+    color: var(--color)
+}
+.container{
+    width: 100%;
+    margin-left: 1.5rem;/*referente a 25px lateral*/
+    margin-right: 1.5rem;
+}
+nav {
+    display:flex;
+    justify-content: space-between;
+}
+/*=========== HOME ================================*/

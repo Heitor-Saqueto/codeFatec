@@ -1,0 +1,394 @@
+function exe1(){
+    // declarar os vetores
+    let vetor = []
+    let impares = []
+    let pares = []
+    // entrada de dados
+    for(let i=0;i<6;i++){
+        vetor[i] = Number(prompt(`Informe o número ${i+1}`))
+    }
+    // alimentar os vetores pares e impares
+    // para não precisarmos controle o índice dos vetores destinos, usamos push()
+  
+    // push() já sabe a primeira posição vazia do vetor
+    for(let i=0;i<6;i++){
+        if (vetor[i] % 2 == 0) {
+            // elemento par
+            pares.push(vetor[i])            
+        }
+        else {
+            // elemento ímpar
+            impares.push(vetor[i])       
+        }
+    }
+    console.log(`Elementos pares ${pares} e qtde ${pares.length}`)
+    console.log(`Elementos ímpares ${impares} e qtde ${impares.length}`)
+}
+
+function exe2(){
+     // declarar os vetores
+     let vetor = []
+     let m2 = []
+     let m3 = []
+     let m23 = []
+    // entrada de dados
+    for(let i=0;i<7;i++){
+        vetor[i] = Number(prompt(`Informe o número ${i+1}`))
+    }
+     // alimentar os vetores m2, m3 e m23
+    // para não precisarmos controle o índice dos vetores destinos, usamos push()
+    // push() já sabe a primeira posição vazia do vetor
+    for(let i=0;i<7;i++){
+        if (vetor[i] % 2 == 0) {
+            // elemento é múltiplo de 2
+            m2.push(vetor[i])            
+        }
+        if (vetor[i] % 3 == 0) {
+            // elemento ímpar
+            m3.push(vetor[i])       
+        }
+        if ((vetor[i] % 2 == 0) && (vetor[i] % 3 == 0)) {
+            // elemento ímpar
+            m23.push(vetor[i])       
+        }
+    }
+    console.log(`Elementos múltiplos de 2: ${m2} e qtde ${m2.length}`)
+    console.log(`Elementos múltiplo de 3: ${m3} e qtde ${m3.length}`)
+    console.log(`Elementos múltiplo de 2 e 3: ${m23} e qtde ${m23.length}`)
+    alert(`Elementos múltiplos de 2: ${m2} e qtde ${m2.length}`)
+    alert(`Elementos múltiplo de 3: ${m3} e qtde ${m3.length}`)
+    alert(`Elementos múltiplo de 2 e 3: ${m23} e qtde ${m23.length}`)
+}
+
+function exe3(){
+    // declaração dos vetores
+    let vetor = []
+
+    // entrada de dados
+    for(let i=0;i<10;i++){
+        let object = {
+            codigo: Number(prompt(`Informe o código do produto ${i+1}`)),
+            estoque: Number(prompt(`Informe o estoque do produto ${i+1}`))
+        }
+        vetor[i].objeto
+    }
+
+    let cliente = Number(prompt(`Informe o código do cliente`))
+    do {
+        let codigoCompra = Number(prompt(`Informe o código do produto para compra`))
+        // verifica se o código
+        let achou = false // ela é false quando não encontrou o produto, e true quando encontrou
+        for(let i=0;i<10;i++){
+            if (codigoCompra == vetor[i].codigo){ // achou
+                achou = true
+                // atualiza estoque
+                let qtdeCompra = Number(prompt(`Informe a qtde da compra`))
+                if (vetor[i].estoque - qtdeCompra >= 0){ // tem estoque suficiente
+                    vetor[i].estoque = vetor[i].estoque - qtdeCompra
+                }
+                else {
+                    alert(`Qtde em estoque é insuficiente`)
+                }
+            }
+        }
+        if (!achou){ // não encontrou
+            alert(`Produto não comprado para venda`)
+        }
+
+        cliente = Number(prompt(`Informe o novo código do cliente. Digite 0 para encerrar`))
+    }
+    while(cliente != 0)
+    alert(`Estoque atualizado ${vetor}`)
+}
+
+function exe4() {
+
+    // let vetor = [] // vetor com tamanho dinâmico
+    let vetor = new Array(15) // vetor com tamanho estático - fixado
+    let vetorR = []
+
+    for(let i=0;i<15;i++){
+        vetor[i] = Number(prompt(`Informe o valor do elemento ${i+1}`))
+    }
+    // construi o vetor resultante
+    for(let i=0;i<15;i++){
+        if (vetor[i] == 30){
+            vetorR.push(i) // adicionamos a posição
+        }
+    }
+    alert(`As posições contendo elementos igual a 30 é ${vetorR}`)
+}
+
+function exe5(){
+
+    let vetLogica = new Array(15)
+    let vetLp = new Array(10)
+    let interseccao = []
+
+    // entrada de dados
+    for(let i=0;i<15;i++){
+        vetLogica[i] = Number(prompt(`Informe código de matrícula do aluno que faz Lógica`))
+    }
+     // entrada de dados
+     for(let i=0;i<10;i++){
+        vetLp[i] = Number(prompt(`Informe código de matrícula do aluno que faz Linguagem de Programação`))
+    }
+
+    // intersecção
+    for(let i=0;i<15;i++){ // percorre o vetor de lógica
+        for(let j=0;j<10;j++){// percorre o vetor de linguagem de programação
+            if (vetLogica[i] == vetLp[j]){
+                interseccao.push(vetLogica[i])
+            }
+        } 
+    }
+    alert(`Alunos que fazem ambas as disciplinas ${interseccao}`)
+}
+function exe6(){
+    // declaração dos vetores
+    let vetNomes = new Array(5) // operador new aloca espaço na memória
+    let vetVendas = new Array(5) // operador new aloca espaço na memória
+    let vetComissao = new Array(5) // operador new aloca espaço na memória
+
+    for(let i=0;i<5;i++){
+        vetNomes[i] = prompt(`Informe o nome do vendedor ${i+1}`)
+        vetVendas[i] = Number(prompt(`Informe o total de vendas do vendedor ${i+1}`))
+        vetComissao[i] = Number(prompt(`Informe o % de comissão do vendedor ${i+1}`))
+    }
+    let totalVendas = 0
+    let maior = 0
+    let nomeMaior = ""
+    let menor = 100000
+    let nomeMenor = ""
+    for(let i=0;i<5;i++){
+        let receber = (vetVendas[i] * vetComissao[i]) / 100 // calcular o valor a receber do vendedor
+        if (receber > maior){
+            maior = receber // atualizar valor maior
+            nomeMaior = vetNomes[i]
+        }
+        if (receber < menor){
+            menor = receber // atualizar valor menor
+            nomeMenor = vetNomes[i]
+        }
+        alert(`O vendedor ${vetNomes[i]} vai receber ${receber}`) // mostra o relatório
+        totalVendas = totalVendas + vetVendas[i] // calcula o total de vendas
+    }
+
+    alert(`O total de vendas foi de ${totalVendas}`)
+    alert(`O maior valor a receber é ${maior} do vendedor ${nomeMaior}`)
+    alert(`O menor valor a receber é ${menor} do vendedor ${nomeMenor}`)
+
+}
+function exe7(){
+    //entrada de dados
+let vetReais = new Array(9)
+let vetInteiros = new Array(9)
+let quantnegative = 0
+let soma = 0
+ //verificações
+for (let i=0;i<=9 ;i++){
+   vetReais[i] = Number(prompt(`Digite um numero no indice ${i}`))
+   // preciso fazer a verificação pra saber se é mesmo um numero inteiro.ou seja que o resto
+   // da divisao seja 0 usando o % modulo...
+   
+    if(vetReais[i]< 0){
+        quantnegative++
+    }
+    if (vetReais[i] > 0 ){
+        soma += vetReais[i]
+    }
+    vetInteiros[i] = vetReais[i]
+
+}
+alert(`foi Digitado \n ${vetInteiros} \n a quantidade de numeros negativos foi de : ${quantnegative} \n A soma foi ${soma}` )
+
+}
+function exe8(){
+  
+    let vetor = new Array(7)
+    
+
+    for(let i=0;i<7;i++){
+        let objeto = {
+            nome: prompt(`Informe o nome do aluno ${i+1}`),
+            media: Number(prompt(`Informe a média do aluno ${i+1}`))
+        }
+      vetor[i] = objeto
+    }
+    // assume que o primeiro aluno tem a maior média
+    let nomeMaiorMedia = vetor[0].media
+    let maiorMedia = vetor[0].media
+    for(let i=0;i<7;i++){ // percorre o vetor
+        if (vetor[i].media > vetor[i].media){
+            maiorMedia = vetor[i].media
+            nomeMaiorMedia = vetor[i].nome
+        }
+        if (vetMedias[i] < 7){
+            alert(`O aluno ${vetor[i].nome} está de exame e precisa tirar ${10 - vetor[i].media}` )
+        }
+    }
+    alert(`Nome do aluno com maior média ${nomeMaiorMedia} com média ${maiorMedia}`)
+}
+function exe9(){
+    let vetNomes = new Array(10)
+    let vetCodigos = new Array(10)
+    let vetPrecos = new Array(10)
+    let vetNovos = new Array(10)
+    // leitura de dados
+    for(let i=0;i<10;i++){
+        vetNomes[i] = prompt(`Informe o nome do produto ${i+1}`)
+        vetCodigos[i] = Number(prompt(`Informe o código do produto ${i+1}`))
+        vetPrecos[i] = Number(prompt(`Informe o preço do produto ${i+1}`))
+    }
+    for(let i=0;i<10;i++){
+        if ((vetCodigos[i] % 2 == 0) && (vetPrecos[i] > 1000)) {
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*20/100)
+        }
+        else if (vetCodigos[i] % 2 == 0){
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*15/100)
+        }
+        else if (vetPrecos[i] > 1000){
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*10/100)
+        }
+        else {
+            vetNovos[i] = -1 // indica que não teve aumento
+        }
+    }
+    for(let i=0;i<10;i++){
+        if (vetNovos[i] != -1) {
+            alert(`Produto ${vetNomes[i]} com código ${vetCodigos[i]} tinha preço ${vetPrecos[i]} e terá novo preço ${vetNovos[i]}`)
+        }
+    }
+    function exe1nl(){
+        let opcao
+        let vetVendedores = []
+        let vetVendas = []
+        do {
+            opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Mostra total vendas a partir de um vendedor \n5. Maior Venda de um mês \n6. Mês com maior venda \n7. Sair"))
+            switch(opcao){
+                case 1: let objeto1 = {
+                            codigo: prompt(`Informe o código do vendedor`),
+                            nome: prompt(`Informe o nome do vendedor`)    
+                        }
+                        // vamos percorrer vetor para encontrar código já existente
+                        let achou1 = false // se não encontrar, recebe false, caso encontre, recebe true
+                        // vetVendedores.length -> qtde de elementos no vetor
+                        for(let i=0;i<vetVendedores.length;i++){
+                            if (vetVendedores[i].codigo == objeto1.codigo){
+                                achou1 = true // encontramos um vendedor com este código
+                            }
+                        }
+                        if (achou1) {
+                            alert(`Já existe um vendedor com este código`)
+                        }
+                        else {
+                            vetVendedores.push(objeto1) // adiciona o vendedor no vetor
+                            alert(`Vendedor cadastrado com sucesso`)
+                        }
+                        break
+                case 2: let objeto2 = {
+                            vendedor: prompt(`Informe o código do vendedor`),
+                            mes: Number(prompt(`Informe o mês da venda`)),
+                            valor: Number(prompt(`Informe o valor da venda`))
+                        }
+                        let achou22 = false // verifica se o vendedor existe
+                        for(let i=0;i<vetVendedores.length;i++){
+                            if (vetVendedores[i].codigo == objeto2.vendedor){
+                                achou22 = true // existe
+                            }
+                        }
+                        if (!achou22){
+                            alert(`Vendedor não existe`)
+                        }
+                        else {
+                            let achou2 = false
+                            for(let i=0;i<vetVendas.length;i++){
+                                if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
+                                    achou2 = true
+                                }
+                            }
+                            if (achou2){
+                                alert(`Já existe uma venda deste vendedor neste mês`)
+                            }
+                            else {
+                                vetVendas.push(objeto2)
+                                alert(`Venda cadastrada com sucesso`)
+                            }
+                        }
+                        break
+                case 3: let codigoInteresse = prompt(`Informe código do vendedor`)
+                        let mesInteresse = Number(prompt(`Informe mês de interesse`))
+                        let achou3 = false
+                        for(let i=0;i<vetVendas.length;i++){
+                            if ((vetVendas[i].vendedor == codigoInteresse) && (vetVendas[i].mes == mesInteresse)){
+                                alert(`O valor das vendas no mês ${mesInteresse} do funcionário ${codigoInteresse} é de ${vetVendas[i].valor}`)
+                                achou3 = true
+                            }
+                        }
+                        if (!achou3){
+                            alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
+                        }
+                        break
+                case 4: 
+                        let codigoInteresse2 = prompt(`Informe código do vendedor`)
+                        let achou4 = false
+                        let soma = 0
+                        for(let i=0;i<vetVendas.length;i++){
+                            if ((vetVendas[i].vendedor == codigoInteresse2)){
+                                soma = soma + vetVendas[i].valor
+                                achou4 = true
+                            }
+                        }
+                        if (!achou4){
+                            alert(`Não foi encontrada venda para o vendedor ${codigoInteresse2}`)
+                        }
+                        else {
+                            alert(`O total de vendas do vendedor ${codigoInteresse2} é ${soma}`)
+                        }
+                        break
+                case 5: let mesInteresse2 = Number(prompt(`Informe o mês de interesse`))
+                        let maiorVenda = 0
+                        let quemVendeu = ""
+                        let achou5 = false
+                        for(let i=0;i<vetVendas.length;i++){
+                            if (vetVendas[i].mes == mesInteresse2){
+                                achou5 = true
+                                if (vetVendas[i].valor > maiorVenda){
+                                    maiorVenda = vetVendas[i].valor
+                                    quemVendeu = vetVendas[i].vendedor
+                                }
+                            }
+                        }
+                        if (achou5){
+                            alert(`O maior venda no mês ${mesInteresse2} foi de ${quemVendeu} no valor de ${maiorVenda}`)
+                        }
+                        else {
+                            alert(`Não existe venda no mês informado`)
+                        }
+                        break
+                case 6:
+                        let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
+                        for(let i=0;i<vetVendas.length;i++){
+                            let posicao = vetVendas[i].mes - 1 // posição é no mês da venda - 1
+                            vendasMes[posicao] = vendasMes[posicao] + vetVendas[i].valor
+                        }
+                        // procurar o mês com maior venda
+                        let maiorVenda = 0
+                        let maiorMes = 0
+                        for(let i=0;i<vendasMes.length;i++){
+                            if (vendasMes[i] > maiorVenda){
+                                maiorVenda = vendasMes
+                                maiorMes = i + 1
+                            }
+                        }
+                        alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda}`)
+                        break
+                case 7: alert("Finalizando o programa")
+                        break
+                default: alert("Opção inválida")
+            }
+        }
+        while (opcao != 7)
+    
+    }
+}
